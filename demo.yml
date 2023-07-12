@@ -1,0 +1,30 @@
+---
+- name: example playbook
+  hosts: all
+  vars:
+    myvar: "example text"
+    mybool: false
+    mycities:
+      - NewYork
+      - Paris
+
+  tasks:
+    - name: Print Var
+      debug:
+        msg: "value {{ myvar }}"
+      notify: reload
+
+    - name: condition
+      debug:
+        msg: "example condition"
+      when: mybool
+
+    - name: print cities
+      debug:
+        var: item
+      loop: "{{ mycities }}"
+
+  handlers:
+    - name: reload
+      debug:
+        msg: "example handler"

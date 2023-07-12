@@ -1,0 +1,18 @@
+---
+- name: debug module demo
+  hosts: all
+  vars:
+    fruit: "apple"
+  tasks:
+    - name: debug message
+      debug:   
+        msg: "Debug Custom Message"     # Debug Custom Message
+
+    - name: print var using debug module
+      debug:
+        var:  fruit
+        verbosity: 2
+
+    - name: Replace Message with Variable
+      debug: 
+        msg: "The fruit name is {{ fruit }}"

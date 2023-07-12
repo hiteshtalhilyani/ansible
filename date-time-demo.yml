@@ -1,0 +1,12 @@
+--- 
+- name: Date Time Demo
+  hosts: all
+  gather_facts: yes 
+  tasks:
+    - name: Date Time
+      debug: 
+        var: ansible_date_time
+
+    - name: ISO8601
+      debug: 
+        var: ansible_date_time.iso8601

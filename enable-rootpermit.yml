@@ -1,0 +1,19 @@
+---
+- name: Enable RootPermit Demo
+  hosts: all
+  become: true
+  gather_facts: true
+  tasks:
+    - name:  Enable RootPermit
+      lineinfile:
+        dest: /etc/ssh/sshd_config
+        regex: '^PermitRootLogin'
+        line: "PermitRootLogin yes"
+        state: present
+      notify: ssh restart
+
+  handlers:
+    - name: ssh restart
+      service:
+        name: sshd
+        state: restarted

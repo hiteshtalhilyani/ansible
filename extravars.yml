@@ -1,0 +1,9 @@
+---
+- name: Extra Variables Value 
+  hosts:  all
+  vars:
+    fruit: banana
+  tasks:
+    - name: Print Variable
+      debug:
+        msg: "{{ fruit }} is fruit"

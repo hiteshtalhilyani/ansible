@@ -1,0 +1,19 @@
+---
+- name: Date Time Demo with Lookup Option
+  hosts: all
+  gather_facts: no
+  tasks:
+    - name: date and time
+      debug:
+        msg: "{{ lookup('pipe', 'date +%Y-%m-%d@$H:%M:%S') }}"
+
+    - name: iso8601 manual
+      debug:
+        msg: "{{ lookup('pipe', 'date +%Y-%m-%d@$H:%M:%S%z') }}"
+
+    - name: iso8601
+      debug:
+        msg: "{{ lookup('pipe', 'date --iso8601=seconds') }}"
+      ignore_errors: true
+
+    

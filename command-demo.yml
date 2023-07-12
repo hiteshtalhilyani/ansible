@@ -1,0 +1,11 @@
+---
+- name: Command Demo
+  hosts: all
+  tasks:
+    - name: Check Uptime
+      command: uptime
+      register: uptime_output
+
+    - name: Command Output
+      debug:
+        var: uptime_output.stdout_lines

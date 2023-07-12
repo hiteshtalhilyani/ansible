@@ -1,0 +1,28 @@
+---
+- name: Multi line variable demo
+  hosts: all
+  vars: 
+    variable1: |-
+      exactly as you see 
+      will appear these three lines 
+      of poetry
+    
+    variable2: >-       #"-" will remove the new line after printing
+      thing is really a 
+      single line of text 
+      despite appearances
+
+  tasks:
+    - name: Print multiline variable1 
+      debug:
+        var: variable1
+
+    - name: Print multiline variable2
+      debug:
+        var: variable2
+    
+    - name: Print multiline variable1 with split
+      debug:
+        msg: "{{ variable1.split('\n') }}" 
+
+    

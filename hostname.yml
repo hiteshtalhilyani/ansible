@@ -1,0 +1,16 @@
+---
+- name: Hostnames Demo
+  hosts: all
+  gather_facts: true
+  tasks:
+    - name: print inventory hostname
+      debug:
+       var: inventory_hostname
+
+    - name: print ansible_hostname
+      debug: 
+        var: ansible_hostname
+
+    - name: print host fqdn
+      debug:
+        var: ansible_fqdn

@@ -1,0 +1,16 @@
+---
+- name: Remote Environment
+  hosts: all
+  gather_facts: false
+  environment:
+    EXAMPLE: test1
+  
+  tasks: 
+    - name:  Display Example
+      command: "echo $EXAMPLE"
+
+    - name: Display Example2
+      command: "echo $EXAMPLE"
+      environment:
+        EXAMPLE: test2
+      

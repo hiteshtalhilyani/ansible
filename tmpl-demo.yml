@@ -1,0 +1,12 @@
+--- 
+- name: Template Demo
+  hosts: all
+  vars:
+    fruit: "apple"
+    output: "output.txt"
+  tasks:
+    - name: Write to file
+      template:
+        src: "mytemplate.j2"
+        dest:   "{{ output }}"
+        

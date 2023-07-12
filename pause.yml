@@ -1,0 +1,13 @@
+---
+- name: Pause the Playbook
+  hosts: all
+  vars: 
+    wait_seconds: 20
+  tasks:
+    - name: To Pause the Playbook for {{ wait_seconds | int }} second(s)
+      pause:
+        seconds: "{{ wait_seconds | int }}"
+
+    - name: Message
+      debug:
+        msg: "The End"

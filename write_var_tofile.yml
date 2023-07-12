@@ -1,0 +1,12 @@
+---
+- name: copy variable to file
+  hosts: all
+  vars:
+    fruit: "banana"
+    output: "output.txt"
+  tasks:
+    - name: Write to file
+      copy:
+        content: "{{ fruit }}"
+        dest:   "{{ output }}"
+        

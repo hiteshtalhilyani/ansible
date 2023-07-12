@@ -1,0 +1,9 @@
+---
+- name: harmful playbook
+  #hosts: all
+  #hosts: demo1
+  hosts: "{{ HOSTS }}"
+  tasks:
+    - name: harmful task
+      debug: 
+        msg: "Harmful Task"

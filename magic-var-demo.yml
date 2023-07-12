@@ -1,0 +1,21 @@
+---
+- name: Ansible Magic Variable Demo
+  hosts: all 
+  gather_facts: no
+  tasks:
+    - name: Magic Var Demo
+      debug: 
+        var: "{{ item }}"
+      loop
+        - ansible_config_file
+        - playbook_dir
+        - inventory_file
+        - ansible_check_mode
+        - ansible_diff_mode
+        - ansible_forks
+        - ansible_verbosity
+        - inventory_hostname
+        - ansible_play_hosts
+        - ansible_version
+
+        

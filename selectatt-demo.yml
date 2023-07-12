@@ -1,0 +1,12 @@
+---
+- name: Selector Demo Attr
+  hosts: all
+  gather_facts: yes
+  tasks:
+    - name: All features
+      ansible.builtin.debug:
+        var: 'ansible_facts.enp0s3.features'
+
+    - name: Filter Enabled
+      debug:
+        msg: "{{ (ansible_facts.enp0s3.features | dict2items | selectattr('value', 'match', 'off') ) }}"

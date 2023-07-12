@@ -1,0 +1,11 @@
+---
+- name: Shell Demo
+  hosts: all
+  tasks:
+    - name: List Files in Current Directory
+      shell: "ls -l *"
+      register: file_output
+
+    - name: Files Output
+      debug:
+        var: file_output.stdout_lines
