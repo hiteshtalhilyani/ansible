@@ -1,0 +1,15 @@
+---
+- name: Check Directory
+  hosts: all
+  vars:
+    mydir: "/opt"
+  tasks:
+    - name: To check the directory Exists
+      ansible.builtin.stat:
+        path: "{{ mydir }}"
+      register: dir_output
+
+    - name: Check if Directory Exist
+      ansible.builtin.debug:
+        msg: "Directory {{ mydir }} present"
+      when: dir_output.stat.isdir is defined and dir_output.stat.isdir 

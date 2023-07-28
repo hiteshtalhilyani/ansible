@@ -1,0 +1,10 @@
+---
+- name: Create User Demo
+  hosts: all
+  become: true
+  tasks:
+    - name: Create User Example
+      ansible.builtin.user: 
+        name: hkt
+        state: absent
+        remove: yes

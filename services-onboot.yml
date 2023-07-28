@@ -1,0 +1,17 @@
+---
+- name: Enable services on Boot
+  hosts: all
+  vars:
+    services_on_boot: 
+      - "chronyd.service"
+  tasks:
+    - name: Populate Service Fact
+      ansible.builtin.service_facts:
+
+    - name: enable services on boot
+      ansible.builtin.service:
+         name: "{{ item }}"
+         enabled: false
+         state: started
+      when: "item in services"
+      with_items: '{{ services_on_boot }}'

@@ -1,0 +1,12 @@
+---
+- name: Demo with vault password
+  hosts: all
+  gather_facts: no
+  tasks:
+    - name: Include Vault
+      include_vars: 
+        file: mypassword.yml
+
+    - name: print variable
+      debug:
+        var: mypassword

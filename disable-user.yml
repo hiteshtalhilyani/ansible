@@ -1,0 +1,14 @@
+---
+- name: Disable User 
+  hosts: all
+  become: true
+  vars: 
+    myuser: "hkt"
+    mypassword: "password"
+  tasks:
+    - name: Disable User Account
+      ansible.builtin.user: 
+        name: "{{ myuser }}"
+        state: present
+        password_lock: true
+        shell: '/sbin/nologin'

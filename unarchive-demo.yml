@@ -1,0 +1,19 @@
+---
+- name: Unarchive Demo
+  hosts: all
+  vars:
+    myurl: "https://github.com/lucab85/ansible-pilot/archive/refs/heads/master.zip"
+    mydest: "/opt/"
+  tasks:
+    - name: Update the package cache
+      apt:
+        update_cache: yes
+    
+    - name: Unarchive the Package
+      ansible.builtin.unarchive: 
+        src: "{{ myurl }}"
+        dest: "{{ mydest }}"
+        remote_src: true
+        
+   
+   

@@ -1,0 +1,12 @@
+---
+- name: Module Demo
+  hosts: localhost
+  become: true
+  vars:
+    module_name: "dummy"
+    ansible_collection: local
+  tasks:
+    - name: Ansible Module Demo
+      community.general.modprobe:
+        name: "{{ module_name }}"
+        state: present

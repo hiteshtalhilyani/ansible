@@ -1,0 +1,11 @@
+---
+- name: Assign Execution Permission to File
+  hosts: all
+  gather_facts: no
+  vars:
+    myscript: "~/example.sh"
+  tasks:
+    - name: Delete file or directory
+      ansible.builtin.file:
+        dest: "{{ myscript }}"
+        state: absent 

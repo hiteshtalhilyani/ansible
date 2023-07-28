@@ -1,0 +1,16 @@
+---
+- name: Git clone 
+  hosts: all
+  gather_facts: no
+  become: true
+  tasks:
+    # - name: Install Git Package
+    #   apt:
+    #     name: git
+    #     state: present
+    
+    - name: Checkout Git Repo
+      ansible.builtin.git:
+         repo: https://github.com/hiteshtalhilyani/ansible-demo.git
+         dest: /opt/ansible/
+

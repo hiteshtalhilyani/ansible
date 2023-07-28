@@ -1,0 +1,13 @@
+---
+- name: Copy Multiple Files
+  hosts: all
+  gather_facts: no
+  tasks:
+    - name: Copy Files 
+      ansible.builtin.copy:
+        src: "{{ item }}"
+        dest: /opt
+        owner: osboxes
+        mode: '0644'
+      with_fileglob:
+      - "examples/*.txt"

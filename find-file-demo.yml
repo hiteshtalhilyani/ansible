@@ -1,0 +1,19 @@
+---
+- name: Demo Find Files 
+  hosts: all
+  vars:
+    mypath: '~/example-backup/examples/'
+    mypattern: '*.cnf'
+  tasks:
+    - name: Find Files Using Extension
+      ansible.builtin.find:
+        paths: "{{ mypath }}"
+        hidden: true
+        recurse: true
+        file_type: any
+        patterns: "{{ mypattern }}"
+      register: found_files
+
+    - name: Print Found Files
+      ansible.builtin.debug:
+        var: found_files.files

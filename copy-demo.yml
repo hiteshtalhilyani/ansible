@@ -1,0 +1,19 @@
+---
+- name: Copy File to Remote Host
+  hosts: all
+  gather_facts: no
+  vars:
+    myfile: "example2.txt"
+  tasks:
+    - name: Copy file to Remote Host
+      ansible.builtin.copy:
+        dest: "/opt/{{ myfile }}"
+        content: |
+          line1
+          line2
+          end
+        mode: 0644
+        owner: root
+        group: root
+
+        

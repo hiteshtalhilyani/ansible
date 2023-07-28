@@ -1,0 +1,9 @@
+---
+- name: Debug Demo
+  hosts: all
+  vars:
+    fruit: "apple"
+  tasks:
+    - name: Builtin
+      ansible.builtin.debug:
+        msg: "{{ fruit }}"

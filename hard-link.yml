@@ -1,0 +1,13 @@
+---
+- name: Hard Link Demo
+  hosts: all
+  gather_facts: no
+  vars:
+    mylink: "~/resolv.conf"
+    mysrc: "/etc/resolv.conf"
+  tasks:
+    - name: Create Hard Link 
+      ansible.builtin.file:
+        src: "{{ mysrc }}"
+        dest: "{{ mylink }}"
+        state: hard

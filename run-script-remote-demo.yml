@@ -1,0 +1,28 @@
+---
+- name: Execute Script on Remote Host
+  hosts: all
+  gather_facts: no
+  tasks: 
+    - name: Execute Python Script
+      ansible.builtin.script: 
+        executable: python3
+        cmd: cars.py
+      register: cars_output
+
+    - name: Print Cars Raw Output
+      debug: 
+        var: cars_output
+        verbosity: 2 
+
+    - name: Convert Output to JSON
+      ansible.builtin.set_fact:
+        cars_list: "{{ cars_output.stdout | from_json }}"
+    
+    - name: Print JSON Output
+      ansible.builtin.debug:
+        var: cars_list
+
+    
+
+
+        

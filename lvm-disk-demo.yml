@@ -1,0 +1,10 @@
+---
+- name: Disk Demo
+  hosts: all
+  tasks:
+    - name: Create Partition
+      community.general.parted:
+        device: /dev/sdb
+        number: 1
+        flags: [ lvm ]
+        state: present

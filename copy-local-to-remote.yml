@@ -1,0 +1,12 @@
+---
+- name: Copy file from local to remote system
+  hosts: all
+  gather_facts: no
+  tasks:
+    - name: Copy file from local to remote hosts
+      ansible.builtin.copy:
+        src: report.txt
+        dest: /opt/
+        mode: '0644'
+        owner: osboxes
+

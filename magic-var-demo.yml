@@ -6,7 +6,7 @@
     - name: Magic Var Demo
       debug: 
         var: "{{ item }}"
-      loop
+      loop:
         - ansible_config_file
         - playbook_dir
         - inventory_file
@@ -15,7 +15,9 @@
         - ansible_forks
         - ansible_verbosity
         - inventory_hostname
-        - ansible_play_hosts
         - ansible_version
+        - ansible_play_hosts
+        - playbook_dir
+       
 
-        
+

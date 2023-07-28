@@ -1,0 +1,13 @@
+---
+- name: Create ISO File
+  hosts: all
+  gather_facts: no
+  tasks:
+    - name: Create ISO
+      community.general.iso_create:
+        src_files:
+          - /opt/example.txt
+        dest_iso:
+          - /opt/test.iso
+        interchange_level:  3
+        joliet: 3

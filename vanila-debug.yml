@@ -1,0 +1,9 @@
+---
+- name: Debug Demo
+  hosts: all
+  vars:
+    fruit: "apple"
+  tasks:
+    - name: Vanila
+      debug:
+        msg: "{{ fruit }}"

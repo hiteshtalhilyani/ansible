@@ -1,0 +1,11 @@
+---
+- name: Read Env Variable
+  hosts: all
+  tasks:
+    - name: Read Env Variable of the System
+      ansible.builtin.debug:
+        msg: "{{ lookup('env', 'SHELL') }}"
+
+    - name: Read Env Variable of the System
+      ansible.builtin.debug:
+        msg: "{{ lookup('env', 'PATH') }}"

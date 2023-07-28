@@ -1,0 +1,10 @@
+---
+- name: Read File Contents Using 
+  hosts: all
+  gather_facts: no
+  vars:
+    contents: "{{ lookup('file', 'example.txt') }}"
+  tasks:
+    - name: Print File Contents
+      ansible.builtin.debug:
+        msg: "The content of file is {{ contents }}"

@@ -1,0 +1,14 @@
+---
+- name: Lineinfile Demo
+  hosts: all
+  become: true
+  gather_facts: no
+  tasks: 
+    - name: Add Line in sshd_config file
+      ansible.builtin.lineinfile:
+        state: present
+        dest: /etc/ssh/sshd_config
+        regex: PasswordAuthentication
+        line: PasswordAuthentication yes
+        validate: 'sshd -t -f %s'
+

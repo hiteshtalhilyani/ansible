@@ -1,0 +1,19 @@
+---
+- name: Set OS Environment Variable
+  hosts: all
+  gather_facts: no
+  vars:
+    os_environment:
+      - key: EDITOR
+        value: vi
+      - key: MY_ENV_VARIABLE
+        value: ansibleproject
+  tasks:
+    - name: Setn Env variable in /etc/environment
+      ansible.builtin.lineinfile:
+        dest: /etc/environment
+        regex: '^{{ item.key }}='
+        line: "{{ item.key }} = {{ item.value }}"
+      with_items: "{{ os_environment }}"
+
+      

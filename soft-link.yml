@@ -1,0 +1,27 @@
+---
+- name: Create Soft Link
+  hosts: all
+  gather_facts: no
+  vars:
+    mylink: "~/cpuinfo"
+    mysrc: "/proc/cpuinfo"
+    src1: "/run/systemd/resolve/resolv.conf"
+    link1: "/etc/resolv.conf"
+  tasks:
+    - name: Create Soft Link 
+      ansible.builtin.file:
+        src: "{{ mysrc }}"
+        dest: "{{ mylink }}"
+        state: link 
+
+    - name: Remove Soft Link from /etc/resolv.conf 
+      ansible.builtin.file:
+        path: "{{ link1 }}"
+        state: absent
+
+    - name: Create Soft Link of /etc/resolv.conf
+      ansible.builtin.file:
+        src: "{{ src1 }}"
+        dest: "{{ link1 }}"
+        state: link 
+    

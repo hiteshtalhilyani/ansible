@@ -1,0 +1,17 @@
+---
+- name: Read from Remote Hosts
+  hosts: all
+  gather_facts: no
+  vars: 
+    remotefile: /proc/cpuinfo
+  tasks:
+    - name: Read from Remote file using slurp module
+      ansible.builtin.slurp:
+        src: "{{ remotefile }}"
+      register: slurpfile
+
+    - name: Print contents of Slurp Module
+      ansible.builtin.debug:
+        msg: "{{ slurpfile['content'] |   b64decode }}"
+
+        

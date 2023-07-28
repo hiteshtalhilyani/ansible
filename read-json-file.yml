@@ -1,0 +1,10 @@
+---
+- name: Read JSON File on Localhost
+  hosts: localhost
+  gather_facts: no
+  vars:
+    jsondata: "{{ lookup('file', 'example.json') | from_json }}"
+  tasks:
+    - name: Read Data from JSON File example.json
+      ansible.builtin.debug:
+        var:  jsondata 

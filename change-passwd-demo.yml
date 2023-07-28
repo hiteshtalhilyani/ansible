@@ -1,0 +1,14 @@
+---
+- name: Create User Demo
+  hosts: all
+  become: true
+  vars: 
+    myuser: "hkt"
+    mypassword: "password"
+  tasks:
+    - name: Change Password 
+      ansible.builtin.user: 
+        name: "{{ myuser }}"
+        password: "{{ mypassword | password_hash('sha512') }}"
+        state: present
+        

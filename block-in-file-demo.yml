@@ -1,0 +1,13 @@
+---
+- name: Block in file Demo - Adding Host file
+  hosts: all
+  gather_facts: no
+  tasks:
+    - name: Adding a line in /etc/hosts file
+      ansible.builtin.blockinfile:
+        state: present
+        dest: /etc/hosts
+        content: |
+          192.168.56.150    demo1
+          192.168.56.152    demo3
+        

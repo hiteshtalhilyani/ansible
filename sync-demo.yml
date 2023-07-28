@@ -1,0 +1,13 @@
+#ansible-galaxy collection install ansible.posix 
+
+---
+- name: Rsync Demo
+  hosts: all
+  vars:
+    mysrc: 'examples'
+    mydest: "example-backup"
+  tasks:
+    - name: Data Sync
+      ansible.posix.synchronize:
+        src: "{{ mysrc }}"
+        dest: "{{ mydest }}"

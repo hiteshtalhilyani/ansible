@@ -1,0 +1,9 @@
+---
+- name: service restart
+  hosts: all
+  tasks:
+    - name: service restart
+      ansible.builtin.service:
+        name: sshd
+        state: restarted
+        enabled: true

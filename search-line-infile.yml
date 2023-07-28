@@ -1,0 +1,15 @@
+---
+- name: Search Line In File
+  hosts: all 
+  vars:
+    myfile: '/etc/ssh/sshd_config'
+    myline: 'PasswordAuthentication yes'
+  tasks:
+    - name: Search Line In File
+      ansible.builtin.lineinfile:
+        name: "{{ myfile }}"
+        line: "{{ myline }}"
+        state: present
+      check_mode: true 
+      register: conf
+      failed_when: (conf is changed) or (conf is failed)

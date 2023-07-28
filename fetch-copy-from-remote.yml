@@ -1,0 +1,12 @@
+---
+- name: Copy file from Remote Host to Controller Machine
+  hosts: all
+  gather_facts: yes
+  vars:
+    log_file: "/var/log/syslog"
+    dump_dir: "logs"
+  tasks:
+    - name: Copy file Remote Machine to Local 
+      ansible.builtin.fetch:
+        src: "{{ log_file }}"
+        dest: "{{ dump_dir }}"

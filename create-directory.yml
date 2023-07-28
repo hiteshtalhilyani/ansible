@@ -1,0 +1,14 @@
+---
+- name: Create Directory Demo
+  hosts: all
+  gather_facts: no  
+  vars: 
+    mydir: "/opt/devops"
+  tasks:
+    - name: Create Directory Under /opt
+      ansible.builtin.file:
+        path: "{{ mydir }}"
+        state: directory
+        mode: '0644'
+        owner: root
+        group: root

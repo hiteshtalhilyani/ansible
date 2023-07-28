@@ -1,0 +1,9 @@
+---
+- name: Debug Demo
+  hosts: all
+  vars:
+    fruit: "apple"
+  tasks:
+    - name: Legacy
+      ansible.legacy.debug:
+        msg: "{{ fruit }}"
